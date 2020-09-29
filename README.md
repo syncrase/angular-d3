@@ -2,6 +2,22 @@
 # AngularD3
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
+Dans le but de m'essayer à la librairie D3.js
+
+## Genèse du projet
+ng new angular-d3
+cd angular-d3\
+npm audit fix --force (parcequ'il y avait 2 vulnérabilité mineure -> toutes deux résolues par le fix)
+npm install d3 && npm install @types/d3 --save-dev
+ng g component charts/bar && ng g component charts/pie && ng g component charts/scatter && ng g component charts/responsive-path
+
+git init
+git remote add origin https://github.com/syncrase/angular-d3.git    (repo distant fraichement créé avec README et LICENCE)
+git branch --set-upstream-to=origin/master  (pour faire un pull sans préciser la branche)
+git pull --allow-unrelated-histories  (pour faire le pull sans tenir compte de l'écart entre l'historique local et distant => fix du conflit)
+git add .
+git commit -m "init project"
+git push
 
 ## Development server
 
@@ -27,9 +43,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+## Référence qui m'ont été utiles
+Pour commencer https://blog.logrocket.com/data-visualization-angular-d3/
 
-
-
-# angular-d3
-Premier pas avec d3 intégré dans angular
-
+## Exemples d'implémentations D3.js
+https://www.d3-graph-gallery.com/index.html
