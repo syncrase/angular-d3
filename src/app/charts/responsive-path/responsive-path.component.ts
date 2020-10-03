@@ -68,7 +68,7 @@ export class ResponsivePathComponent implements OnInit {
   private createSvg(): void {
     // Create SVG and padding for the chart
     this.svg = d3
-      .select("#chart")
+      .select("#responsivePath")
       .append("svg")
       .attr("height", 300)
       .attr("width", 600);
