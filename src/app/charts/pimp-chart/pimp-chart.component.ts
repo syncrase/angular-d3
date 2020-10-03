@@ -41,7 +41,6 @@ export class PimpChartComponent implements OnInit {
   div =
     d3
       .select('body')
-      // .append('div')
       // this.svg
       .append('div')
       .attr('class', 'tooltip')
@@ -50,7 +49,8 @@ export class PimpChartComponent implements OnInit {
       // .attr('style', 'background-color: red')// .attr style doit être AVANT .style
       // .style('height', '100px')
       // .style('width', '100px')
-      // .style('z-index', '999')
+      // .style('z-index', '9999')
+      // .style("position", "absolute")
       .attr('left', `500px`)// d3.event.pageX
       .attr('top', `500px`)// d3.event.pageY;
       // .attr('transform', `translate(200, 200)`)
@@ -58,7 +58,7 @@ export class PimpChartComponent implements OnInit {
       //   `<span>olala</span>`
       // );
       .text(
-        `olala`
+        `I'm at the wrong place!`
       );
   // .style('height', '100px')
   // .style('width', '100px');
@@ -130,7 +130,8 @@ export class PimpChartComponent implements OnInit {
 
     this.svg
       .append('g')
-      .attr('transform', `translate(${this.margin.left}, ${this.rayon + 5})`)
+      // ${this.rayon - 20}
+      .attr('transform', `translate(${this.margin.left}, 0)`)
       .call(legendColor().scale(ordinal))
   }
 
