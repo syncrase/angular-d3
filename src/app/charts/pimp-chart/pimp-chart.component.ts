@@ -125,12 +125,10 @@ export class PimpChartComponent implements OnInit {
   }
 
   getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+    // var letters = '0123456789ABCDEF';
+    // var color = '#';
+    // for (; color.length < 7; color += letters[Math.floor(Math.random() * 16)]);
+    return '#' + (Math.random() * 0xFFFFFF1 << 2).toString(16).substr(0, 6);
   }
 
   readonly onMouseover = (d: any, i: any) => {
