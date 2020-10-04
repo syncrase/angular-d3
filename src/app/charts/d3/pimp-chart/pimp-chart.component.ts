@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { siegesParPartiNov19 } from './data';
 import { legendColor } from 'd3-svg-legend';
@@ -9,7 +9,7 @@ import { ChartComponent } from '../../displayer/chart.component';
   templateUrl: './pimp-chart.component.html',
   styleUrls: ['./pimp-chart.component.css']
 })
-export class PimpChartComponent implements OnInit, ChartComponent {
+export class PimpChartComponent implements OnInit, ChartComponent, OnDestroy {
 
   @Input() data: any;
 
@@ -63,7 +63,11 @@ export class PimpChartComponent implements OnInit, ChartComponent {
     this.constructArc();
     this.genererLesCouleursDesEntrees();
     this.createSvg();
-    this.createLengend();
+    this.createLegend();
+  }
+
+  ngOnDestroy(): void {
+    console.log("PimpChartComponent destroyed");
   }
 
   constructArc() {
@@ -112,7 +116,7 @@ export class PimpChartComponent implements OnInit, ChartComponent {
       .text(function (d) { return siegesParPartiNov19[d.index].nom; });
   }
 
-  createLengend() {
+  createLegend() {
     var ordinal = d3
       .scaleOrdinal(this.partiesColor)
       .domain(siegesParPartiNov19.map(parti => parti.nom));

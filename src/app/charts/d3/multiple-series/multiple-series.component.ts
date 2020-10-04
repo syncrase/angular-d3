@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import {
   resultCollectionSpainNov19,
@@ -13,7 +13,7 @@ import { ChartComponent } from '../../displayer/chart.component';
   templateUrl: './multiple-series.component.html',
   styleUrls: ['./multiple-series.component.css']
 })
-export class MultipleSeriesComponent implements OnInit, ChartComponent {
+export class MultipleSeriesComponent implements OnInit, ChartComponent, OnDestroy {
 
   @Input() data: any;
 
@@ -83,6 +83,10 @@ export class MultipleSeriesComponent implements OnInit, ChartComponent {
 
   ngOnInit() {
     this.createSvg();
+  }
+
+  ngOnDestroy(): void {
+    console.log("MultipleSeriesComponent destroyed");
   }
 
   createSvg() {

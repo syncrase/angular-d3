@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ChartComponent } from '../../displayer/chart.component';
 
@@ -13,7 +13,7 @@ class Data {
   selector: 'app-responsive-path',
   templateUrl: './responsive-path.component.html'
 })
-export class ResponsivePathComponent implements OnInit, ChartComponent {
+export class ResponsivePathComponent implements OnInit, ChartComponent, OnDestroy {
 
   @Input() data: any;
 
@@ -67,6 +67,10 @@ export class ResponsivePathComponent implements OnInit, ChartComponent {
   ngOnInit() {
     this.createSvg();
     this.drawBars(this.jsonData);
+  }
+
+  ngOnDestroy(): void {
+    console.log("ResponsivePathComponent destroyed");
   }
 
   private createSvg(): void {

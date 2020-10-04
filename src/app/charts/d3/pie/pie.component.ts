@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ChartComponent } from '../../displayer/chart.component';
 
@@ -6,7 +6,7 @@ import { ChartComponent } from '../../displayer/chart.component';
   selector: 'app-pie',
   templateUrl: './pie.component.html'
 })
-export class PieComponent implements OnInit, ChartComponent {
+export class PieComponent implements OnInit, ChartComponent, OnDestroy {
 
   @Input() data: any;
 
@@ -31,6 +31,10 @@ export class PieComponent implements OnInit, ChartComponent {
     this.createSvg();
     this.createColors();
     this.drawChart();
+  }
+
+  ngOnDestroy(): void {
+    console.log("PieComponent destroyed");
   }
 
   private createSvg(): void {

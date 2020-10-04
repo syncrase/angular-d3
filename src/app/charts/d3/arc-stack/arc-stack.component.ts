@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ChartComponent } from '../../displayer/chart.component';
 import { resultCollectionSpainNov19 } from './data';
@@ -8,7 +8,7 @@ import { resultCollectionSpainNov19 } from './data';
   templateUrl: './arc-stack.component.html',
   styleUrls: ['./arc-stack.component.css']
 })
-export class ArcStackComponent implements OnInit, ChartComponent {
+export class ArcStackComponent implements OnInit, ChartComponent, OnDestroy {
 
   @Input() data: any;
 
@@ -52,6 +52,10 @@ export class ArcStackComponent implements OnInit, ChartComponent {
 
 
   constructor() { }
+
+  ngOnDestroy(): void {
+    console.log("arc ctack destroyed");
+  }
 
   ngOnInit() {
     this.createSvg();

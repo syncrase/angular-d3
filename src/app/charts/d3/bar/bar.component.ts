@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ChartComponent } from '../../displayer/chart.component';
 
@@ -6,7 +6,7 @@ import { ChartComponent } from '../../displayer/chart.component';
   selector: 'app-bar',
   templateUrl: './bar.component.html'
 })
-export class BarComponent implements OnInit, ChartComponent {
+export class BarComponent implements OnInit, ChartComponent, OnDestroy {
 
   @Input() data: any;
 
@@ -30,6 +30,10 @@ export class BarComponent implements OnInit, ChartComponent {
     // d3.csv("../../assets/frameworks.csv").then(data => this.drawBars(data));
     // this.drawBars(this.data);
     d3.json('https://api.jsonbin.io/b/5eee6a5397cb753b4d149343').then(data => this.drawBars(<any[]>data));
+  }
+
+  ngOnDestroy(): void {
+    console.log("arc ctack destroyed");
   }
 
   private createSvg(): void {

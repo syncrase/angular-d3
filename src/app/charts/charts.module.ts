@@ -16,6 +16,10 @@ import { DisplayerComponent } from './displayer/displayer.component';
 import { ChartDirective } from './displayer/chart-banner/chart.directive';
 import { ChartService } from './displayer/chart.service';
 import { ChartBannerComponent } from './displayer/chart-banner/chart-banner.component';
+import { MapHoverComponent } from './d3/map-hover/map-hover.component';
+import { MapScaleCountriesComponent } from './d3/map-scale-countries/map-scale-countries.component';
+import { MapPinLocationComponent } from './d3/map-pin-location/map-pin-location.component';
+import { MapSpainChloroplethComponent } from './d3/map-spain-chloropleth/map-spain-chloropleth.component';
 
 
 
@@ -39,7 +43,11 @@ import { ChartBannerComponent } from './displayer/chart-banner/chart-banner.comp
     ViewBoxComponent,
     DisplayerComponent,
     ChartDirective,
-    ChartBannerComponent
+    ChartBannerComponent,
+    MapHoverComponent,
+    MapScaleCountriesComponent,
+    MapPinLocationComponent,
+    MapSpainChloroplethComponent
   ],
   entryComponents: [
     BarComponent,
@@ -52,7 +60,11 @@ import { ChartBannerComponent } from './displayer/chart-banner/chart-banner.comp
     ArcStackComponent,
     PimpChartComponent,
     MultipleSeriesComponent,
-    ViewBoxComponent
+    ViewBoxComponent,
+    MapHoverComponent,
+    MapScaleCountriesComponent,
+    MapPinLocationComponent,
+    MapSpainChloroplethComponent
   ],
   bootstrap: [DisplayerComponent]
 })

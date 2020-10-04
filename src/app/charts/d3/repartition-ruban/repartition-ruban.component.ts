@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { resultCollectionSpainNov19 } from './data';
 import * as d3 from 'd3';
 import { ChartComponent } from '../../displayer/chart.component';
@@ -8,7 +8,7 @@ import { ChartComponent } from '../../displayer/chart.component';
   templateUrl: './repartition-ruban.component.html',
   styleUrls: ['./repartition-ruban.component.css']
 })
-export class RepartitionRubanComponent implements OnInit, ChartComponent {
+export class RepartitionRubanComponent implements OnInit, ChartComponent, OnDestroy {
 
   @Input() data: any;
 
@@ -66,6 +66,10 @@ export class RepartitionRubanComponent implements OnInit, ChartComponent {
 
   ngOnInit() {
     this.createSvg();
+  }
+
+  ngOnDestroy(): void {
+    console.log("RepartitionRubanComponent destroyed");
   }
 
   createSvg() {

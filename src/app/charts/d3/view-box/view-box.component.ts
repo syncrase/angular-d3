@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
+import { ChartComponent } from '../../displayer/chart.component';
 import { resultCollectionSpainNov19 } from './data';
 
 @Component({
@@ -7,8 +8,9 @@ import { resultCollectionSpainNov19 } from './data';
   templateUrl: './view-box.component.html',
   styleUrls: ['./view-box.component.css']
 })
-export class ViewBoxComponent implements OnInit {
+export class ViewBoxComponent implements OnInit, ChartComponent, OnDestroy {
 
+  @Input() data: any;
 
   readonly svgDimensions = { width: 500, height: 250 };
   readonly margin = { left: 5, right: 5, top: 10, bottom: 10 };
@@ -45,6 +47,10 @@ export class ViewBoxComponent implements OnInit {
 
   ngOnInit() {
     this.createSvg();
+  }
+
+  ngOnDestroy(): void {
+    console.log("ViewBoxComponent destroyed");
   }
 
   createSvg() {

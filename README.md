@@ -37,6 +37,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Référence qui m'ont été utiles
 Pour commencer https://blog.logrocket.com/data-visualization-angular-d3/
+D'autres exemples plus complets https://github.com/Lemoncode/d3js-typescript-examples.git
 Chargement dynamic des composants https://angular.io/guide/dynamic-component-loader
 
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ChartComponent } from '../../displayer/chart.component';
 
@@ -6,7 +6,7 @@ import { ChartComponent } from '../../displayer/chart.component';
   selector: 'app-scatter',
   templateUrl: './scatter.component.html'
 })
-export class ScatterComponent implements OnInit, ChartComponent {
+export class ScatterComponent implements OnInit, ChartComponent, OnDestroy {
 
   @Input() data: any;
 
@@ -28,6 +28,10 @@ export class ScatterComponent implements OnInit, ChartComponent {
   ngOnInit() {
     this.createSvg();
     this.drawPlot();
+  }
+
+  ngOnDestroy(): void {
+    console.log("ScatterComponent destroyed");
   }
 
   private createSvg(): void {

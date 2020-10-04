@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { resultCollectionSpainNov19 } from './data';
 import * as d3 from 'd3';
 import { ChartComponent } from '../../displayer/chart.component';
@@ -8,7 +8,7 @@ import { ChartComponent } from '../../displayer/chart.component';
   templateUrl: './bar2.component.html',
   styleUrls: ['./bar2.component.css']
 })
-export class Bar2Component implements OnInit, ChartComponent {
+export class Bar2Component implements OnInit, ChartComponent, OnDestroy {
 
   @Input() data: any;
 
@@ -72,6 +72,10 @@ export class Bar2Component implements OnInit, ChartComponent {
 
   ngOnInit() {
     this.createSvg();
+  }
+
+  ngOnDestroy(): void {
+    console.log("Bar2Component destroyed");
   }
 
   createSvg() {
