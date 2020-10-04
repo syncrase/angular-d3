@@ -4,12 +4,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
 Dans le but de m'essayer à la librairie D3.js
 
-## Genèse du projet
-ng new angular-d3
-cd angular-d3\
-npm audit fix --force (parcequ'il y avait 2 vulnérabilité mineure -> toutes deux résolues par le fix)
-npm install d3 && npm install @types/d3 --save-dev
-ng g component charts/bar && ng g component charts/pie && ng g component charts/scatter && ng g component charts/responsive-path
+## Exemple de genèse de projet avec Angular CLI
+ng new angular-d3 && cd angular-d3\ && npm audit fix --force && npm install d3 && npm install @types/d3 --save-dev && npm install d3-svg-legend && ng g component charts/d3/arc-stack && ng g component charts/d3/bar && ng g component charts/d3/bar2 && ng g component charts/d3/multiple-series && ng g component charts/d3/pie && ng g component charts/d3/pimp-chart && ng g component charts/d3/repartition-ruban && ng g component charts/d3/repartition-ruban-stack && ng g component charts/d3/responsive-path && ng g component charts/d3/scatter && ng g component charts/d3/view-box
 
 git init
 git remote add origin https://github.com/syncrase/angular-d3.git    (repo distant fraichement créé avec README et LICENCE)
@@ -41,6 +37,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Référence qui m'ont été utiles
 Pour commencer https://blog.logrocket.com/data-visualization-angular-d3/
+Chargement dynamic des composants https://angular.io/guide/dynamic-component-loader
+
 
 ## Exemples d'implémentations D3.js
 https://www.d3-graph-gallery.com/index.html

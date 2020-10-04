@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
+import { ChartComponent } from '../../displayer/chart.component';
 
 class Data {
   year: number; aData: number; bData: number
@@ -12,10 +13,13 @@ class Data {
   selector: 'app-responsive-path',
   templateUrl: './responsive-path.component.html'
 })
-export class ResponsivePathComponent implements OnInit {
+export class ResponsivePathComponent implements OnInit, ChartComponent {
+
+  @Input() data: any;
+
 
   // Fake data
-  readonly data: Data[] = [
+  readonly jsonData: Data[] = [
     {
       year: 2000,
       aData: 50,
@@ -62,7 +66,7 @@ export class ResponsivePathComponent implements OnInit {
 
   ngOnInit() {
     this.createSvg();
-    this.drawBars(this.data);
+    this.drawBars(this.jsonData);
   }
 
   private createSvg(): void {

@@ -50,7 +50,7 @@ export class ViewBoxComponent implements OnInit {
   createSvg() {
 
     const svg = d3
-      .select('body')
+      .select('app-view-box')
       .append('svg')
       .attr('width', '100%')
       .attr('height', '100%')

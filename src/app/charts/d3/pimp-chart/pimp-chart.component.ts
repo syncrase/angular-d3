@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { siegesParPartiNov19 } from './data';
 import { legendColor } from 'd3-svg-legend';
+import { ChartComponent } from '../../displayer/chart.component';
 
 @Component({
   selector: 'app-pimp-chart',
   templateUrl: './pimp-chart.component.html',
   styleUrls: ['./pimp-chart.component.css']
 })
-export class PimpChartComponent implements OnInit {
+export class PimpChartComponent implements OnInit, ChartComponent {
+
+  @Input() data: any;
 
   readonly svgDimensions = { width: 800, height: 500 };
   readonly margin = { left: 5, right: 5, top: 10, bottom: 10 };
@@ -100,7 +103,7 @@ export class PimpChartComponent implements OnInit {
 
     // Add label at the middle of the section
     this.arcs.append('text')
-      .attr('transform', function (d) {
+      .attr('transform', function (d: any) {
         const coordonneesDuCentreDeLarc = arc.centroid(<d3.DefaultArcObject><unknown>d);
         return `translate(${coordonneesDuCentreDeLarc[0]},${coordonneesDuCentreDeLarc[1]})`;
       })

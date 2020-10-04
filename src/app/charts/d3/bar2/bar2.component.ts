@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { resultCollectionSpainNov19 } from './data';
 import * as d3 from 'd3';
+import { ChartComponent } from '../../displayer/chart.component';
 
 @Component({
   selector: 'app-bar2',
   templateUrl: './bar2.component.html',
   styleUrls: ['./bar2.component.css']
 })
-export class Bar2Component implements OnInit {
+export class Bar2Component implements OnInit, ChartComponent {
+
+  @Input() data: any;
 
   readonly svgDimensions = { width: 500, height: 500 };
   readonly margin = { left: 5, right: 5, top: 10, bottom: 10 };
@@ -74,7 +77,7 @@ export class Bar2Component implements OnInit {
   createSvg() {
 
     const svg = d3
-      .select("body")
+      .select("app-bar2")
       .append("svg")
       .attr("width", this.svgDimensions.width)
       .attr("height", this.svgDimensions.height)

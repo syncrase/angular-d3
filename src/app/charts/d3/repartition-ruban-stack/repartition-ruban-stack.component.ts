@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
+import { ChartComponent } from '../../displayer/chart.component';
 import { resultCollectionSpainNov19 } from './data';
 
 @Component({
@@ -7,7 +8,9 @@ import { resultCollectionSpainNov19 } from './data';
   templateUrl: './repartition-ruban-stack.component.html',
   styleUrls: ['./repartition-ruban-stack.component.css']
 })
-export class RepartitionRubanStackComponent implements OnInit {
+export class RepartitionRubanStackComponent implements OnInit, ChartComponent {
+
+  @Input() data: any;
 
 
   readonly svgDimensions = { width: 800, height: 500 };
@@ -46,23 +49,6 @@ export class RepartitionRubanStackComponent implements OnInit {
     ])
     .domain(this.politicalPartiesKeys);
 
-  readonly svg = d3
-    .select("body")
-    .append("svg")
-    .attr("width", this.svgDimensions.width)
-    .attr("height", this.svgDimensions.height)
-    .attr("style", "background-color: #FBFAF0");
-
-  readonly chartGroup = this.svg
-    .append("g")
-    .attr("transform", `translate(${this.margin.left}, ${this.margin.top})`)
-    .attr("width", this.chartDimensions.width)
-    .attr("height", this.chartDimensions.height);
-
-  readonly xScale = d3
-    .scaleLinear()
-    .domain([0, this.totalNumberSeats])
-    .range([0, this.chartDimensions.width]);
 
   // Since we are going to use stack layout
   // We are going to format the data in the following format
@@ -86,7 +72,7 @@ export class RepartitionRubanStackComponent implements OnInit {
   // Stack Layout will expect an array of objects
   // In this case we are going to display only one bar
   // we just wrap it in an array
-  readonly data = [this.singleElectionResult];
+  readonly jsonData = [this.singleElectionResult];
 
   // Let's create our stack layout
   // we are going to pass the keys (PSOE, PP, VOX, UP, Cs...)
@@ -101,6 +87,23 @@ export class RepartitionRubanStackComponent implements OnInit {
 
   createSvg() {
 
+    const svg = d3
+      .select("app-repartition-ruban-stack")
+      .append("svg")
+      .attr("width", this.svgDimensions.width)
+      .attr("height", this.svgDimensions.height)
+      .attr("style", "background-color: #FBFAF0");
+
+    const chartGroup = svg
+      .append("g")
+      .attr("transform", `translate(${this.margin.left}, ${this.margin.top})`)
+      .attr("width", this.chartDimensions.width)
+      .attr("height", this.chartDimensions.height);
+
+    const xScale = d3
+      .scaleLinear()
+      .domain([0, this.totalNumberSeats])
+      .range([0, this.chartDimensions.width]);
 
     // Now we get the data formatted in the follwing way:
     //[
@@ -108,9 +111,9 @@ export class RepartitionRubanStackComponent implements OnInit {
     //  [[120,208]] // PP entry (88), but starts on previous items 120 (PSOE)
     //  [[208, 260]] // VOX Entry
     //]
-    const series = this.stack(this.data);
+    const series = this.stack(this.jsonData);
 
-    this.chartGroup
+    chartGroup
       .selectAll("rect")
       .data(series)
       .enter()
@@ -118,13 +121,13 @@ export class RepartitionRubanStackComponent implements OnInit {
       .attr("width", d => {
         // To get the width of the current item we have to substract
         // the final stack value - the initial stack value
-        return this.xScale(d[0][1] - d[0][0]);
+        return xScale(d[0][1] - d[0][0]);
       })
       .attr("height", this.barHeight)
       .attr("x", (d, i) => {
         // We take as starting point the first coordinate
         // e.g. PP 120, 208 -> we start at 120 (where PSOE ended, and on the width param sum up that value)
-        return this.xScale(d[0][0]);
+        return xScale(d[0][0]);
       })
       .attr("y", d => this.chartDimensions.height - this.barHeight)
       .attr("fill", (d, i) => this.partiesColorScale(d.key));

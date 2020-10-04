@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PimpChartComponent } from './pimp-chart/pimp-chart.component';
+import { DisplayerComponent } from './displayer/displayer.component';
 
 
 const routes: Routes = [
     {
         path: '**',
-        component: PimpChartComponent
+        component: DisplayerComponent
     }
 ];
 

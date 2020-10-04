@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
+import { ChartComponent } from '../../displayer/chart.component';
 
 @Component({
   selector: 'app-scatter',
   templateUrl: './scatter.component.html'
 })
-export class ScatterComponent implements OnInit {
+export class ScatterComponent implements OnInit, ChartComponent {
 
-  private data = [
+  @Input() data: any;
+
+
+  private jsonData = [
     { "Framework": "Vue", "Stars": "166443", "Released": "2014" },
     { "Framework": "React", "Stars": "150793", "Released": "2013" },
     { "Framework": "Angular", "Stars": "62342", "Released": "2016" },
@@ -54,7 +58,7 @@ export class ScatterComponent implements OnInit {
     // Add dots
     const dots = this.svg.append('g');
     dots.selectAll("dot")
-      .data(this.data)
+      .data(this.jsonData)
       .enter()
       .append("circle")
       .attr("cx", d => x(d.Released))
@@ -65,7 +69,7 @@ export class ScatterComponent implements OnInit {
 
     // Add labels
     dots.selectAll("text")
-      .data(this.data)
+      .data(this.jsonData)
       .enter()
       .append("text")
       .text(d => d.Framework)

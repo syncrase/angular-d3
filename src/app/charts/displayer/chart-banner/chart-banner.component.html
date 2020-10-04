@@ -1,0 +1,8 @@
+<div class="chart-banner-example">
+    <h3>Tous les graphs actuellement disponibles</h3>
+    <select name="charts" id="charts" (change)="onChange($event.target.value)">
+        <option *ngFor="let chart of charts; let i = index" [value]="i">{{chart.data.name}}</option>
+    </select>
+
+    <ng-template appChart></ng-template>
+</div>

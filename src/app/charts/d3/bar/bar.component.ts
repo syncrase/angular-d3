@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
+import { ChartComponent } from '../../displayer/chart.component';
 
 @Component({
   selector: 'app-bar',
   templateUrl: './bar.component.html'
 })
-export class BarComponent implements OnInit {
+export class BarComponent implements OnInit, ChartComponent {
 
-  private data = [
+  @Input() data: any;
+
+  private jsonData = [
     // { "Framework": "Vue", "Stars": "166443", "Released": "2014" },
     // { "Framework": "React", "Stars": "150793", "Released": "2013" },
     // { "Framework": "Angular", "Stars": "62342", "Released": "2016" },

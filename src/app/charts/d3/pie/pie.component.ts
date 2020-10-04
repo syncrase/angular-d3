@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
+import { ChartComponent } from '../../displayer/chart.component';
 
 @Component({
   selector: 'app-pie',
   templateUrl: './pie.component.html'
 })
-export class PieComponent implements OnInit {
+export class PieComponent implements OnInit, ChartComponent {
 
-  private data = [
+  @Input() data: any;
+
+  private jsonData = [
     { "Framework": "Vue", "Stars": "166443", "Released": "2014" },
     { "Framework": "React", "Stars": "150793", "Released": "2013" },
     { "Framework": "Angular", "Stars": "62342", "Released": "2016" },
@@ -44,7 +47,7 @@ export class PieComponent implements OnInit {
 
   private createColors(): void {
     this.colors = d3.scaleOrdinal()
-      .domain(this.data.map(d => d.Stars.toString()))
+      .domain(this.jsonData.map(d => d.Stars.toString()))
       .range(["#c7d3ec", "#a5b8db", "#879cc4", "#677795", "#5a6782"]);
   }
 
@@ -55,7 +58,7 @@ export class PieComponent implements OnInit {
     // Build the pie chart
     this.svg
       .selectAll('pieces')
-      .data(pie(this.data))
+      .data(pie(this.jsonData))
       .enter()
       .append('path')
       .attr('d', d3.arc()
@@ -73,7 +76,7 @@ export class PieComponent implements OnInit {
 
     this.svg
       .selectAll('pieces')
-      .data(pie(this.data))
+      .data(pie(this.jsonData))
       .enter()
       .append('text')
       .text(d => d.data.Framework)

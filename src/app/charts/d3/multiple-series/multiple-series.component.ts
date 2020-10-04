@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import {
   resultCollectionSpainNov19,
@@ -6,13 +6,16 @@ import {
   ResultEntry
 } from './data';
 import { legendColor } from 'd3-svg-legend';
+import { ChartComponent } from '../../displayer/chart.component';
 
 @Component({
   selector: 'app-multiple-series',
   templateUrl: './multiple-series.component.html',
   styleUrls: ['./multiple-series.component.css']
 })
-export class MultipleSeriesComponent implements OnInit {
+export class MultipleSeriesComponent implements OnInit, ChartComponent {
+
+  @Input() data: any;
 
 
 
@@ -85,7 +88,7 @@ export class MultipleSeriesComponent implements OnInit {
   createSvg() {
 
     const svg = d3
-      .select('body')
+      .select('app-multiple-series')
       .append('svg')
       .attr('width', this.svgDimensions.width)
       .attr('height', this.svgDimensions.height)
