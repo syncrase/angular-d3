@@ -12,7 +12,7 @@ import { ChartDirective } from './chart.directive';
 export class ChartBannerComponent implements OnInit, OnDestroy {
   @Input() charts: ChartItem[];
   currentChartIndex = -1;
-  @ViewChild(ChartDirective, { static: true }) appChart: ChartDirective;
+  @ViewChild(ChartDirective, { static: true }) chartHost: ChartDirective;
   interval: any;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
@@ -32,7 +32,7 @@ export class ChartBannerComponent implements OnInit, OnDestroy {
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(chartItem.component);
 
-    const viewContainerRef = this.appChart.viewContainerRef;
+    const viewContainerRef = this.chartHost.viewContainerRef;
     viewContainerRef.clear();
 
     const componentRef = viewContainerRef.createComponent<ChartComponent>(componentFactory);
@@ -51,7 +51,7 @@ export class ChartBannerComponent implements OnInit, OnDestroy {
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(chartItem.component);
 
-    const viewContainerRef = this.appChart.viewContainerRef;
+    const viewContainerRef = this.chartHost.viewContainerRef;
     viewContainerRef.clear();
 
     const componentRef = viewContainerRef.createComponent<ChartComponent>(componentFactory);

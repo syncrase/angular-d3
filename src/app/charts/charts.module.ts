@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ArcStackComponent } from './d3/arc-stack/arc-stack.component';
-import { BarComponent } from './d3/bar/bar.component';
-import { Bar2Component } from './d3/bar2/bar2.component';
-import { MultipleSeriesComponent } from './d3/multiple-series/multiple-series.component';
-import { PieComponent } from './d3/pie/pie.component';
-import { PimpChartComponent } from './d3/pimp-chart/pimp-chart.component';
-import { RepartitionRubanStackComponent } from './d3/repartition-ruban-stack/repartition-ruban-stack.component';
-import { RepartitionRubanComponent } from './d3/repartition-ruban/repartition-ruban.component';
-import { ResponsivePathComponent } from './d3/responsive-path/responsive-path.component';
-import { ScatterComponent } from './d3/scatter/scatter.component';
-import { ViewBoxComponent } from './d3/view-box/view-box.component';
+import { ArcStackComponent } from './d3/pies/arc-stack/arc-stack.component';
+import { BarComponent } from './d3/bars/bar/bar.component';
+import { Bar2Component } from './d3/bars/bar2/bar2.component';
+import { MultipleSeriesComponent } from './d3/pies/multiple-series/multiple-series.component';
+import { PieComponent } from './d3/pies/pie/pie.component';
+import { PimpChartComponent } from './d3/pies/pimp-chart/pimp-chart.component';
+import { RepartitionRubanStackComponent } from './d3/stacks/repartition-ruban-stack/repartition-ruban-stack.component';
+import { RepartitionRubanComponent } from './d3/stacks/repartition-ruban/repartition-ruban.component';
+import { ResponsivePathComponent } from './d3/pathes/responsive-path/responsive-path.component';
+import { ScatterComponent } from './d3/scatters/scatter/scatter.component';
+import { ViewBoxComponent } from './d3/pies/view-box/view-box.component';
 import { ChartsRoutingModule } from './charts-routing.module';
 import { DisplayerComponent } from './displayer/displayer.component';
 import { ChartDirective } from './displayer/chart-banner/chart.directive';
 import { ChartService } from './displayer/chart.service';
 import { ChartBannerComponent } from './displayer/chart-banner/chart-banner.component';
-import { MapHoverComponent } from './d3/map-hover/map-hover.component';
-import { MapScaleCountriesComponent } from './d3/map-scale-countries/map-scale-countries.component';
-import { MapPinLocationComponent } from './d3/map-pin-location/map-pin-location.component';
-import { MapSpainChloroplethComponent } from './d3/map-spain-chloropleth/map-spain-chloropleth.component';
+import { MapHoverComponent } from './d3/maps/map-hover/map-hover.component';
+import { MapScaleCountriesComponent } from './d3/maps/map-scale-countries/map-scale-countries.component';
+import { MapPinLocationComponent } from './d3/maps/map-pin-location/map-pin-location.component';
+import { MapSpainChloroplethComponent } from './d3/maps/map-spain-chloropleth/map-spain-chloropleth.component';
 
 
 
