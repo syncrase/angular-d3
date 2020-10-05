@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as topojson from 'topojson-client';
 import * as d3Composite from 'd3-composite-projections';
@@ -17,13 +17,13 @@ export class MapPinLocationComponent implements OnInit, ChartComponent, OnDestro
 
   spainjson;
 
-  constructor() { }
+  constructor(private hostElement: ElementRef) { }
 
   ngOnInit() {
 
     const request = new XMLHttpRequest();
-    request.open("GET", "/assets/data/spain.json", false);
-    request.overrideMimeType("application/json");
+    request.open('GET', '/assets/data/spain.json', false);
+    request.overrideMimeType('application/json');
     request.send(null);
     this.spainjson = JSON.parse(request.responseText);
 
@@ -31,7 +31,7 @@ export class MapPinLocationComponent implements OnInit, ChartComponent, OnDestro
   }
 
   ngOnDestroy(): void {
-    console.log("MapPinLocationComponent destroyed");
+    console.log(this.hostElement.nativeElement.localName + ' destroyed');
   }
 
 
@@ -53,7 +53,7 @@ export class MapPinLocationComponent implements OnInit, ChartComponent, OnDestro
     };
 
     const svg = d3
-      .select('body')
+      .select(this.hostElement.nativeElement.localName)
       .append('svg')
       .attr('width', 1024)
       .attr('height', 800)

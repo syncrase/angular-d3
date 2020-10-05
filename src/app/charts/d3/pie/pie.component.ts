@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ChartComponent } from '../../displayer/chart.component';
 
@@ -11,11 +11,11 @@ export class PieComponent implements OnInit, ChartComponent, OnDestroy {
   @Input() data: any;
 
   private jsonData = [
-    { "Framework": "Vue", "Stars": "166443", "Released": "2014" },
-    { "Framework": "React", "Stars": "150793", "Released": "2013" },
-    { "Framework": "Angular", "Stars": "62342", "Released": "2016" },
-    { "Framework": "Backbone", "Stars": "27647", "Released": "2010" },
-    { "Framework": "Ember", "Stars": "21471", "Released": "2011" },
+    { 'Framework': 'Vue', 'Stars': '166443', 'Released': '2014' },
+    { 'Framework': 'React', 'Stars': '150793', 'Released': '2013' },
+    { 'Framework': 'Angular', 'Stars': '62342', 'Released': '2016' },
+    { 'Framework': 'Backbone', 'Stars': '27647', 'Released': '2010' },
+    { 'Framework': 'Ember', 'Stars': '21471', 'Released': '2011' },
   ];
   private svg;
   private margin = 50;
@@ -25,7 +25,7 @@ export class PieComponent implements OnInit, ChartComponent, OnDestroy {
   private radius = Math.min(this.width, this.height) / 2 - this.margin;
   private colors;
 
-  constructor() { }
+  constructor(private hostElement: ElementRef) { }
 
   ngOnInit() {
     this.createSvg();
@@ -34,25 +34,25 @@ export class PieComponent implements OnInit, ChartComponent, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log("PieComponent destroyed");
+    console.log(this.hostElement.nativeElement.localName + ' destroyed');
   }
 
   private createSvg(): void {
-    this.svg = d3.select("figure#pie")
-      .append("svg")
-      .attr("width", this.width)
-      .attr("height", this.height)
-      .append("g")
+    this.svg = d3.select(this.hostElement.nativeElement.localName)
+      .append('svg')
+      .attr('width', this.width)
+      .attr('height', this.height)
+      .append('g')
       .attr(
-        "transform",
-        "translate(" + this.width / 2 + "," + this.height / 2 + ")"
+        'transform',
+        'translate(' + this.width / 2 + ',' + this.height / 2 + ')'
       );
   }
 
   private createColors(): void {
     this.colors = d3.scaleOrdinal()
       .domain(this.jsonData.map(d => d.Stars.toString()))
-      .range(["#c7d3ec", "#a5b8db", "#879cc4", "#677795", "#5a6782"]);
+      .range(['#c7d3ec', '#a5b8db', '#879cc4', '#677795', '#5a6782']);
   }
 
   private drawChart(): void {
@@ -70,8 +70,8 @@ export class PieComponent implements OnInit, ChartComponent, OnDestroy {
         .outerRadius(this.radius)
       )
       .attr('fill', (d, i) => (this.colors(i)))
-      .attr("stroke", "#121926")
-      .style("stroke-width", "1px");
+      .attr('stroke', '#121926')
+      .style('stroke-width', '1px');
 
     // Add labels
     const labelLocation = d3.arc()
@@ -84,9 +84,9 @@ export class PieComponent implements OnInit, ChartComponent, OnDestroy {
       .enter()
       .append('text')
       .text(d => d.data.Framework)
-      .attr("transform", d => "translate(" + labelLocation.centroid(d) + ")")
-      .style("text-anchor", "middle")
-      .style("font-size", 15);
+      .attr('transform', d => 'translate(' + labelLocation.centroid(d) + ')')
+      .style('text-anchor', 'middle')
+      .style('font-size', 15);
   }
 
 }

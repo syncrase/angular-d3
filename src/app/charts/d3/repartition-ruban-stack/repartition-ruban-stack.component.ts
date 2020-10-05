@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ChartComponent } from '../../displayer/chart.component';
 import { resultCollectionSpainNov19 } from './data';
@@ -32,20 +32,20 @@ export class RepartitionRubanStackComponent implements OnInit, ChartComponent, O
 
   readonly partiesColorScale = d3
     .scaleOrdinal([
-      "#ED1D25",
-      "#0056A8",
-      "#5BC035",
-      "#6B2E68",
-      "#F3B219",
-      "#FA5000",
-      "#C50048",
-      "#029626",
-      "#A3C940",
-      "#0DDEC5",
-      "#FFF203",
-      "#FFDB1B",
-      "#E61C13",
-      "#73B1E6"
+      '#ED1D25',
+      '#0056A8',
+      '#5BC035',
+      '#6B2E68',
+      '#F3B219',
+      '#FA5000',
+      '#C50048',
+      '#029626',
+      '#A3C940',
+      '#0DDEC5',
+      '#FFF203',
+      '#FFDB1B',
+      '#E61C13',
+      '#73B1E6'
     ])
     .domain(this.politicalPartiesKeys);
 
@@ -79,30 +79,30 @@ export class RepartitionRubanStackComponent implements OnInit, ChartComponent, O
   // to have them attached on every item
   readonly stack = d3.stack().keys(this.politicalPartiesKeys);
 
-  constructor() { }
+  constructor(private hostElement: ElementRef) { }
 
   ngOnInit() {
     this.createSvg();
   }
 
   ngOnDestroy(): void {
-    console.log("RepartitionRubanStackComponent destroyed");
+    console.log(this.hostElement.nativeElement.localName + ' destroyed');
   }
 
   createSvg() {
 
     const svg = d3
-      .select("app-repartition-ruban-stack")
-      .append("svg")
-      .attr("width", this.svgDimensions.width)
-      .attr("height", this.svgDimensions.height)
-      .attr("style", "background-color: #FBFAF0");
+      .select(this.hostElement.nativeElement.localName)
+      .append('svg')
+      .attr('width', this.svgDimensions.width)
+      .attr('height', this.svgDimensions.height)
+      .attr('style', 'background-color: #FBFAF0');
 
     const chartGroup = svg
-      .append("g")
-      .attr("transform", `translate(${this.margin.left}, ${this.margin.top})`)
-      .attr("width", this.chartDimensions.width)
-      .attr("height", this.chartDimensions.height);
+      .append('g')
+      .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`)
+      .attr('width', this.chartDimensions.width)
+      .attr('height', this.chartDimensions.height);
 
     const xScale = d3
       .scaleLinear()
@@ -118,23 +118,23 @@ export class RepartitionRubanStackComponent implements OnInit, ChartComponent, O
     const series = this.stack(this.jsonData);
 
     chartGroup
-      .selectAll("rect")
+      .selectAll('rect')
       .data(series)
       .enter()
-      .append("rect")
-      .attr("width", d => {
+      .append('rect')
+      .attr('width', d => {
         // To get the width of the current item we have to substract
         // the final stack value - the initial stack value
         return xScale(d[0][1] - d[0][0]);
       })
-      .attr("height", this.barHeight)
-      .attr("x", (d, i) => {
+      .attr('height', this.barHeight)
+      .attr('x', (d, i) => {
         // We take as starting point the first coordinate
         // e.g. PP 120, 208 -> we start at 120 (where PSOE ended, and on the width param sum up that value)
         return xScale(d[0][0]);
       })
-      .attr("y", d => this.chartDimensions.height - this.barHeight)
-      .attr("fill", (d, i) => this.partiesColorScale(d.key));
+      .attr('y', d => this.chartDimensions.height - this.barHeight)
+      .attr('fill', (d, i) => this.partiesColorScale(d.key));
 
 
   }

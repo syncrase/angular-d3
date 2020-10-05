@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import {
   resultCollectionSpainNov19,
@@ -79,20 +79,20 @@ export class MultipleSeriesComponent implements OnInit, ChartComponent, OnDestro
   readonly legendLeft = this.margin.left;
   readonly legendTop = this.radius + 5;
 
-  constructor() { }
+  constructor(private hostElement: ElementRef) { }
 
   ngOnInit() {
     this.createSvg();
   }
 
   ngOnDestroy(): void {
-    console.log("MultipleSeriesComponent destroyed");
+    console.log(this.hostElement.nativeElement.localName + ' destroyed');
   }
 
   createSvg() {
 
     const svg = d3
-      .select('app-multiple-series')
+      .select(this.hostElement.nativeElement.localName)
       .append('svg')
       .attr('width', this.svgDimensions.width)
       .attr('height', this.svgDimensions.height)

@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ChartComponent } from '../../displayer/chart.component';
 import { resultCollectionSpainNov19 } from './data';
@@ -51,10 +51,10 @@ export class ArcStackComponent implements OnInit, ChartComponent, OnDestroy {
 
 
 
-  constructor() { }
+  constructor(private hostElement: ElementRef) { }
 
   ngOnDestroy(): void {
-    console.log("arc ctack destroyed");
+    console.log(this.hostElement.nativeElement.localName + " destroyed");
   }
 
   ngOnInit() {
@@ -64,7 +64,7 @@ export class ArcStackComponent implements OnInit, ChartComponent, OnDestroy {
   createSvg() {
 
     const svg = d3
-      .select('app-arc-stack')
+      .select(this.hostElement.nativeElement.localName)
       .append('svg')
       .attr('width', this.svgDimensions.width)
       .attr('height', this.svgDimensions.height)

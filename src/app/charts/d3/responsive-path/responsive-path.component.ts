@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ChartComponent } from '../../displayer/chart.component';
 
@@ -56,13 +56,13 @@ export class ResponsivePathComponent implements OnInit, ChartComponent, OnDestro
       bData: 50
     }
   ];
-  readonly color = ["lightgreen", "lightblue"];
+  readonly color = ['lightgreen', 'lightblue'];
 
   readonly strokeWidth = 1.5;
   readonly margin = { top: 0, bottom: 20, left: 30, right: 20 };
   private svg;
 
-  constructor() { }
+  constructor(private hostElement: ElementRef) { }
 
   ngOnInit() {
     this.createSvg();
@@ -70,30 +70,30 @@ export class ResponsivePathComponent implements OnInit, ChartComponent, OnDestro
   }
 
   ngOnDestroy(): void {
-    console.log("ResponsivePathComponent destroyed");
+    console.log(this.hostElement.nativeElement.localName + ' destroyed');
   }
 
   private createSvg(): void {
     // Create SVG and padding for the chart
     this.svg = d3
-      .select("#responsivePath")
-      .append("svg")
-      .attr("height", 300)
-      .attr("width", 600);
+      .select(this.hostElement.nativeElement.localName)
+      .append('svg')
+      .attr('height', 300)
+      .attr('width', 600);
   }
 
   private drawBars(data: any[]): void {
 
-    const chart = this.svg.append("g").attr("transform", `translate(${this.margin.left},0)`);
+    const chart = this.svg.append('g').attr('transform', `translate(${this.margin.left},0)`);
 
-    const width = +this.svg.attr("width") - this.margin.left - this.margin.right - this.strokeWidth * 2;
-    const height = +this.svg.attr("height") - this.margin.top - this.margin.bottom;
+    const width = +this.svg.attr('width') - this.margin.left - this.margin.right - this.strokeWidth * 2;
+    const height = +this.svg.attr('height') - this.margin.top - this.margin.bottom;
     const grp = chart
-      .append("g")
-      .attr("transform", `translate(-${this.margin.left - this.strokeWidth},-${this.margin.top})`);
+      .append('g')
+      .attr('transform', `translate(-${this.margin.left - this.strokeWidth},-${this.margin.top})`);
 
     // Create stack
-    const stack = d3.stack().keys(["aData", "bData"]);
+    const stack = d3.stack().keys(['aData', 'bData']);
     const stackedValues = stack(data);
     // console.log(stackedValues)
     const stackedData = [];
@@ -134,32 +134,32 @@ export class ResponsivePathComponent implements OnInit, ChartComponent, OnDestro
 
 
     const series = grp
-      .selectAll(".series")
+      .selectAll('.series')
       .data(stackedData)
       .enter()
-      .append("g")
-      .attr("class", "series");
+      .append('g')
+      .attr('class', 'series');
 
     series
-      .append("path")
-      .attr("transform", `translate(${this.margin.left},0)`)
-      .style("fill", (d, i) => this.color[i])
-      .attr("stroke", "steelblue")
-      .attr("stroke-linejoin", "round")
-      .attr("stroke-linecap", "round")
-      .attr("stroke-width", this.strokeWidth)
-      .attr("d", d => area(d));
+      .append('path')
+      .attr('transform', `translate(${this.margin.left},0)`)
+      .style('fill', (d, i) => this.color[i])
+      .attr('stroke', 'steelblue')
+      .attr('stroke-linejoin', 'round')
+      .attr('stroke-linecap', 'round')
+      .attr('stroke-width', this.strokeWidth)
+      .attr('d', d => area(d));
 
     // Add the X Axis
     chart
-      .append("g")
-      .attr("transform", `translate(0,${height})`)
+      .append('g')
+      .attr('transform', `translate(0,${height})`)
       .call(d3.axisBottom(xScale).ticks(data.length));
 
     // Add the Y Axis
     chart
-      .append("g")
-      .attr("transform", `translate(0, 0)`)
+      .append('g')
+      .attr('transform', `translate(0, 0)`)
       .call(d3.axisLeft(yScale));
   }
 

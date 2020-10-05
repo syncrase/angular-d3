@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { siegesParPartiNov19 } from './data';
 import { legendColor } from 'd3-svg-legend';
@@ -36,11 +36,11 @@ export class PimpChartComponent implements OnInit, ChartComponent, OnDestroy {
   graphGroup: any;
   pieChart: any;
 
-  constructor() { }
+  constructor(private hostElement: ElementRef) { }
 
   ngOnInit() {
 
-    this.container = d3.select('app-pimp-chart')
+    this.container = d3.select(this.hostElement.nativeElement.localName)
       .append('div')
       .attr('class', 'container')
       .style('position', 'relative');
@@ -67,7 +67,7 @@ export class PimpChartComponent implements OnInit, ChartComponent, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log("PimpChartComponent destroyed");
+    console.log(this.hostElement.nativeElement.localName + ' destroyed');
   }
 
   constructArc() {
@@ -143,7 +143,7 @@ export class PimpChartComponent implements OnInit, ChartComponent, OnDestroy {
     const e = this.arcs.nodes();
     // const index = e.indexOf(this); // --> Argument of type 'this' is not assignable to parameter of type 'EnterElement'
     const index = e.indexOf(e.find(elt => this.shallowEqual((<any>elt).__data__, i)));
-    // const pointerEvent = d3.pointer(d) // --> Property 'pointer' does not exist on type 'typeof import("<project_root>/node_modules/@types/d3/index")'
+    // const pointerEvent = d3.pointer(d) // --> Property 'pointer' does not exist on type 'typeof import('<project_root>/node_modules/@types/d3/index')'
 
     d3.select(d.currentTarget)
       .transition()

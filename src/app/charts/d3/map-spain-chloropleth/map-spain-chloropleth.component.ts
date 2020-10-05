@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as topojson from 'topojson-client';
 import { Topology, GeometryCollection, Objects } from 'topojson-specification';
@@ -19,10 +19,11 @@ export class MapSpainChloroplethComponent implements OnInit, ChartComponent, OnD
   spainjson;
   municipalitiesjson;
 
-  constructor() { }
+  constructor(private hostElement: ElementRef) { }
 
   ngOnInit() {
 
+    console.log(this.hostElement.nativeElement.localName);
     const request = new XMLHttpRequest();
     request.open('GET', '/assets/data/regions.json', false);
     request.overrideMimeType('application/json');
@@ -38,14 +39,14 @@ export class MapSpainChloroplethComponent implements OnInit, ChartComponent, OnD
   }
 
   ngOnDestroy(): void {
-    console.log('MapSpainChloroplethComponent destroyed');
+    console.log(this.hostElement.nativeElement.localName + ' destroyed');
   }
 
   createSvg() {
 
 
     const svg = d3
-      .select('body')
+      .select(this.hostElement.nativeElement.localName)
       .append('svg')
       .attr('width', 1024)
       .attr('height', 800);

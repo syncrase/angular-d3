@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { ChartComponent } from '../../displayer/chart.component';
 import { resultCollectionSpainNov19 } from './data';
@@ -43,20 +43,20 @@ export class ViewBoxComponent implements OnInit, ChartComponent, OnDestroy {
   readonly pieMarginLeft = (this.chartDimensions.width - this.radius * 2) / 2;
   readonly pieMarginBottom = this.chartDimensions.height - this.radius;
 
-  constructor() { }
+  constructor(private hostElement: ElementRef) { }
 
   ngOnInit() {
     this.createSvg();
   }
 
   ngOnDestroy(): void {
-    console.log("ViewBoxComponent destroyed");
+    console.log(this.hostElement.nativeElement.localName + ' destroyed');
   }
 
   createSvg() {
 
     const svg = d3
-      .select('app-view-box')
+      .select(this.hostElement.nativeElement.localName)
       .append('svg')
       .attr('width', '100%')
       .attr('height', '100%')
