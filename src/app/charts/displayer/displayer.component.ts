@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartItem } from './chart-item';
-import { ChartService } from './chart.service';
+import { ChartItem } from '@charts/displayer/chart-item';
+import { ChartService } from '@charts/displayer/chart.service';
 
 @Component({
   selector: 'app-displayer',

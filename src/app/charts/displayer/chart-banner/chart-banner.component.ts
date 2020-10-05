@@ -1,7 +1,7 @@
 import { Component, ComponentFactoryResolver, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ChartItem } from '../chart-item';
-import { ChartComponent } from '../chart.component';
-import { ChartDirective } from './chart.directive';
+import { ChartItem } from '@charts/displayer/chart-item';
+import { ChartComponent } from '@charts/displayer/chart.component';
+import { ChartDirective } from '@charts/displayer/chart-banner/chart.directive';
 
 @Component({
   selector: 'app-chart-banner',

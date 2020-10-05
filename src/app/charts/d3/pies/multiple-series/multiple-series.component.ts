@@ -6,7 +6,7 @@ import {
   ResultEntry
 } from './data';
 import { legendColor } from 'd3-svg-legend';
-import { ChartComponent } from '../../../displayer/chart.component';
+import { ChartComponent } from '@charts/displayer/chart.component';
 
 @Component({
   selector: 'app-multiple-series',

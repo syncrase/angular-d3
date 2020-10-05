@@ -5,7 +5,7 @@ import { Topology, GeometryCollection, Objects } from 'topojson-specification';
 import * as d3Composite from 'd3-composite-projections';
 import { presimplify, simplify, feature } from 'topojson';//deprecated topojson@3.0.2: Use topojson-client, topojson-server or topojson-simplify directly.
 import { Feature, Geometry } from 'geojson';
-import { ChartComponent } from '../../../displayer/chart.component';
+import { ChartComponent } from '@charts/displayer/chart.component';
 
 @Component({
   selector: 'app-map-spain-chloropleth',

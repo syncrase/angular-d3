@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { BarComponent } from '../d3/bars/bar/bar.component';
-import { Bar2Component } from '../d3/bars/bar2/bar2.component';
-import { MapHoverComponent } from '../d3/maps/map-hover/map-hover.component';
-import { MapPinLocationComponent } from '../d3/maps/map-pin-location/map-pin-location.component';
-import { MapScaleCountriesComponent } from '../d3/maps/map-scale-countries/map-scale-countries.component';
-import { MapSpainChloroplethComponent } from '../d3/maps/map-spain-chloropleth/map-spain-chloropleth.component';
-import { ResponsivePathComponent } from '../d3/pathes/responsive-path/responsive-path.component';
-import { ArcStackComponent } from '../d3/pies/arc-stack/arc-stack.component';
-import { MultipleSeriesComponent } from '../d3/pies/multiple-series/multiple-series.component';
-import { PieComponent } from '../d3/pies/pie/pie.component';
-import { PimpChartComponent } from '../d3/pies/pimp-chart/pimp-chart.component';
-import { ViewBoxComponent } from '../d3/pies/view-box/view-box.component';
-import { ScatterComponent } from '../d3/scatters/scatter/scatter.component';
-import { RepartitionRubanStackComponent } from '../d3/stacks/repartition-ruban-stack/repartition-ruban-stack.component';
-import { RepartitionRubanComponent } from '../d3/stacks/repartition-ruban/repartition-ruban.component';
+import { BarComponent } from '@charts/d3/histograms/bar/bar.component';
+import { Bar2Component } from '@charts/d3/histograms/bar2/bar2.component';
+import { MapHoverComponent } from '@charts/d3/maps/map-hover/map-hover.component';
+import { MapPinLocationComponent } from '@charts/d3/maps/map-pin-location/map-pin-location.component';
+import { MapScaleCountriesComponent } from '@charts/d3/maps/map-scale-countries/map-scale-countries.component';
+import { MapSpainChloroplethComponent } from '@charts/d3/maps/map-spain-chloropleth/map-spain-chloropleth.component';
+import { ResponsivePathComponent } from '@charts/d3/pathes/responsive-path/responsive-path.component';
+import { ArcStackComponent } from '@charts/d3/pies/arc-stack/arc-stack.component';
+import { MultipleSeriesComponent } from '@charts/d3/pies/multiple-series/multiple-series.component';
+import { PieComponent } from '@charts/d3/pies/pie/pie.component';
+import { PimpChartComponent } from '@charts/d3/pies/pimp-chart/pimp-chart.component';
+import { ViewBoxComponent } from '@charts/d3/pies/view-box/view-box.component';
+import { ScatterComponent } from '@charts/d3/scatters/scatter/scatter.component';
+import { RepartitionRubanStackComponent } from '@charts/d3/stacks/repartition-ruban-stack/repartition-ruban-stack.component';
+import { RepartitionRubanComponent } from '@charts/d3/stacks/repartition-ruban/repartition-ruban.component';
 import { ChartItem } from './chart-item';
 
 @Injectable()

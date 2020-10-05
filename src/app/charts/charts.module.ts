@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArcStackComponent } from './d3/pies/arc-stack/arc-stack.component';
-import { BarComponent } from './d3/bars/bar/bar.component';
-import { Bar2Component } from './d3/bars/bar2/bar2.component';
 import { MultipleSeriesComponent } from './d3/pies/multiple-series/multiple-series.component';
 import { PieComponent } from './d3/pies/pie/pie.component';
 import { PimpChartComponent } from './d3/pies/pimp-chart/pimp-chart.component';
@@ -20,6 +18,8 @@ import { MapHoverComponent } from './d3/maps/map-hover/map-hover.component';
 import { MapScaleCountriesComponent } from './d3/maps/map-scale-countries/map-scale-countries.component';
 import { MapPinLocationComponent } from './d3/maps/map-pin-location/map-pin-location.component';
 import { MapSpainChloroplethComponent } from './d3/maps/map-spain-chloropleth/map-spain-chloropleth.component';
+import { BarComponent } from './d3/histograms/bar/bar.component';
+import { Bar2Component } from './d3/histograms/bar2/bar2.component';
 
 
 

@@ -4,7 +4,7 @@ import * as topojson from 'topojson-client';
 import * as d3Composite from 'd3-composite-projections';
 import { latLongCommunities } from './communities';
 import { stats } from './stats';
-import { ChartComponent } from '../../../displayer/chart.component';
+import { ChartComponent } from '@charts/displayer/chart.component';
 
 @Component({
   selector: 'app-map-pin-location',

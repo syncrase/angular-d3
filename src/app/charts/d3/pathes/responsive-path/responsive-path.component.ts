@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { ChartComponent } from '../../../displayer/chart.component';
+import { ChartComponent } from '@charts/displayer/chart.component';
 
 class Data {
   year: number; aData: number; bData: number

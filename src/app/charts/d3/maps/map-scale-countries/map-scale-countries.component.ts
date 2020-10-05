@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
-import { ChartComponent } from '../../../displayer/chart.component';
+import { ChartComponent } from '@charts/displayer/chart.component';
 import * as d3 from 'd3';
 import * as topojson from 'topojson-client';
 import { coronaVirusAffectedByCountry } from './stats';

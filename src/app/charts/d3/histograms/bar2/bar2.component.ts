@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { resultCollectionSpainNov19 } from './data';
 import * as d3 from 'd3';
-import { ChartComponent } from '../../../displayer/chart.component';
+import { ChartComponent } from '@charts/displayer/chart.component';
 
 @Component({
   selector: 'app-bar2',

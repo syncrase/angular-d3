@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { siegesParPartiNov19 } from './data';
 import { legendColor } from 'd3-svg-legend';
-import { ChartComponent } from '../../../displayer/chart.component';
+import { ChartComponent } from '@charts/displayer/chart.component';
 
 @Component({
   selector: 'app-pimp-chart',
