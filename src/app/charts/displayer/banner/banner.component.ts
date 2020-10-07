@@ -1,18 +1,17 @@
 import { Component, ComponentFactoryResolver, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ChartItem } from '@charts/displayer/chart-item';
-import { ChartComponent } from '@charts/displayer/chart.component';
-import { ChartDirective } from '@charts/displayer/chart-banner/chart.directive';
+import { DisplayedWrapper } from '@charts/displayer/displayed-wrapper';
+import { DisplayerContent } from '@charts/displayer/displayer-content.interface';
+import { DisplayedChart } from '@charts/displayer/banner/displayed-chart.directive';
 
 @Component({
-  selector: 'app-chart-banner',
-  templateUrl: './chart-banner.component.html',
-  styleUrls: ['./chart-banner.component.css']
-  // Possible d'ajouter les entreyComponents directement ici?
+  selector: 'app-banner',
+  templateUrl: './banner.component.html'
+  // Possible d'ajouter les entryComponents directement ici?
 })
-export class ChartBannerComponent implements OnInit, OnDestroy {
-  @Input() charts: ChartItem[];
-  currentChartIndex = -1;
-  @ViewChild(ChartDirective, { static: true }) chartHost: ChartDirective;
+export class BannerComponent implements OnInit, OnDestroy {
+  @Input() charts: DisplayedWrapper[];
+  private currentChartIndex = -1;
+  @ViewChild(DisplayedChart, { static: true }) displayedChart: DisplayedChart;
   interval: any;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
@@ -32,10 +31,10 @@ export class ChartBannerComponent implements OnInit, OnDestroy {
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(chartItem.component);
 
-    const viewContainerRef = this.chartHost.viewContainerRef;
+    const viewContainerRef = this.displayedChart.viewContainerRef;
     viewContainerRef.clear();
 
-    const componentRef = viewContainerRef.createComponent<ChartComponent>(componentFactory);
+    const componentRef = viewContainerRef.createComponent<DisplayerContent>(componentFactory);
     componentRef.instance.data = chartItem.data;
   }
 
@@ -51,10 +50,10 @@ export class ChartBannerComponent implements OnInit, OnDestroy {
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(chartItem.component);
 
-    const viewContainerRef = this.chartHost.viewContainerRef;
+    const viewContainerRef = this.displayedChart.viewContainerRef;
     viewContainerRef.clear();
 
-    const componentRef = viewContainerRef.createComponent<ChartComponent>(componentFactory);
+    const componentRef = viewContainerRef.createComponent<DisplayerContent>(componentFactory);
     componentRef.instance.data = chartItem.data;
   }
 }

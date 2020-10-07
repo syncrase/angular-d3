@@ -1,14 +1,14 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { resultCollectionSpainNov19 } from './data';
 import * as d3 from 'd3';
-import { ChartComponent } from '@charts/displayer/chart.component';
+import { DisplayerContent } from '@charts/displayer/displayer-content.interface';
 
 @Component({
   selector: 'app-repartition-ruban',
   templateUrl: './repartition-ruban.component.html',
   styleUrls: ['./repartition-ruban.component.css']
 })
-export class RepartitionRubanComponent implements OnInit, ChartComponent, OnDestroy {
+export class RepartitionRubanComponent implements OnInit, DisplayerContent, OnDestroy {
 
   @Input() data: any;
 

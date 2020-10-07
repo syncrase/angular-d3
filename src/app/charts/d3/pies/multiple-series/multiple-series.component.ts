@@ -6,14 +6,14 @@ import {
   ResultEntry
 } from './data';
 import { legendColor } from 'd3-svg-legend';
-import { ChartComponent } from '@charts/displayer/chart.component';
+import { DisplayerContent } from '@charts/displayer/displayer-content.interface';
 
 @Component({
   selector: 'app-multiple-series',
   templateUrl: './multiple-series.component.html',
   styleUrls: ['./multiple-series.component.css']
 })
-export class MultipleSeriesComponent implements OnInit, ChartComponent, OnDestroy {
+export class MultipleSeriesComponent implements OnInit, DisplayerContent, OnDestroy {
 
   @Input() data: any;
 

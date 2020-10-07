@@ -1,18 +1,19 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as topojson from 'topojson-client';
-import { Topology, GeometryCollection, Objects } from 'topojson-specification';
 import * as d3Composite from 'd3-composite-projections';
-import { presimplify, simplify, feature } from 'topojson';//deprecated topojson@3.0.2: Use topojson-client, topojson-server or topojson-simplify directly.
+import { Topology, GeometryCollection, Objects } from 'topojson-specification';
+// import { presimplify, simplify, feature } from 'topojson';//deprecated topojson@3.0.2: Use topojson-client, topojson-server or topojson-simplify directly.
+import { feature } from 'topojson-client';//deprecated topojson@3.0.2: Use topojson-client 
 import { Feature, Geometry } from 'geojson';
-import { ChartComponent } from '@charts/displayer/chart.component';
+import { DisplayerContent } from '@charts/displayer/displayer-content.interface';
 
 @Component({
   selector: 'app-map-spain-chloropleth',
   templateUrl: './map-spain-chloropleth.component.html',
   styleUrls: ['./map-spain-chloropleth.component.css']
 })
-export class MapSpainChloroplethComponent implements OnInit, ChartComponent, OnDestroy {
+export class MapSpainChloroplethComponent implements OnInit, DisplayerContent, OnDestroy {
 
   @Input() data: any;
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartItem } from '@charts/displayer/chart-item';
-import { ChartService } from '@charts/displayer/chart.service';
+import { DisplayedWrapper } from '@charts/displayer/displayed-wrapper';
+import { DisplayerProvider } from '@charts/displayer/displayer-provider.service';
 
 @Component({
   selector: 'app-displayer',
@@ -8,9 +8,9 @@ import { ChartService } from '@charts/displayer/chart.service';
 })
 export class DisplayerComponent implements OnInit {
 
-  charts: ChartItem[];
+  charts: DisplayedWrapper[];
 
-  constructor(private displayerService: ChartService) { }
+  constructor(private displayerService: DisplayerProvider) { }
 
   ngOnInit() {
     this.charts = this.displayerService.getCharts()

@@ -1,14 +1,14 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as topojson from 'topojson-client';
-import { ChartComponent } from '@charts/displayer/chart.component';
+import { DisplayerContent } from '@charts/displayer/displayer-content.interface';
 
 @Component({
   selector: 'app-map-hover',
   templateUrl: './map-hover.component.html',
   styleUrls: ['./map-hover.component.css']
 })
-export class MapHoverComponent implements OnInit, ChartComponent, OnDestroy {
+export class MapHoverComponent implements OnInit, DisplayerContent, OnDestroy {
 
   @Input() data: any;
 

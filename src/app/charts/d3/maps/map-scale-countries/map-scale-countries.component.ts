@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
-import { ChartComponent } from '@charts/displayer/chart.component';
+import { DisplayerContent } from '@charts/displayer/displayer-content.interface';
 import * as d3 from 'd3';
 import * as topojson from 'topojson-client';
 import { coronaVirusAffectedByCountry } from './stats';
@@ -9,7 +9,7 @@ import { coronaVirusAffectedByCountry } from './stats';
   templateUrl: './map-scale-countries.component.html',
   styleUrls: ['./map-scale-countries.component.css']
 })
-export class MapScaleCountriesComponent implements OnInit, ChartComponent, OnDestroy {
+export class MapScaleCountriesComponent implements OnInit, DisplayerContent, OnDestroy {
 
   @Input() data: any;
 

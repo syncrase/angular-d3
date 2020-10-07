@@ -1,14 +1,14 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { resultCollectionSpainNov19 } from './data';
 import * as d3 from 'd3';
-import { ChartComponent } from '@charts/displayer/chart.component';
+import { DisplayerContent } from '@charts/displayer/displayer-content.interface';
 
 @Component({
   selector: 'app-bar2',
   templateUrl: './bar2.component.html',
   styleUrls: ['./bar2.component.css']
 })
-export class Bar2Component implements OnInit, ChartComponent, OnDestroy {
+export class Bar2Component implements OnInit, DisplayerContent, OnDestroy {
 
   @Input() data: any;
 

@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { ChartComponent } from '@charts/displayer/chart.component';
+import { DisplayerContent } from '@charts/displayer/displayer-content.interface';
 import { resultCollectionSpainNov19 } from './data';
 
 @Component({
@@ -8,7 +8,7 @@ import { resultCollectionSpainNov19 } from './data';
   templateUrl: './view-box.component.html',
   styleUrls: ['./view-box.component.css']
 })
-export class ViewBoxComponent implements OnInit, ChartComponent, OnDestroy {
+export class ViewBoxComponent implements OnInit, DisplayerContent, OnDestroy {
 
   @Input() data: any;
 

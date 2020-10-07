@@ -1,9 +1,9 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[chartHost]'
+  selector: '[displayedChart]'
 })
-export class ChartDirective {
+export class DisplayedChart {
 
   constructor(public viewContainerRef: ViewContainerRef) { }
 

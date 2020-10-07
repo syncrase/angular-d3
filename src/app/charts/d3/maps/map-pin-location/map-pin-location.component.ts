@@ -4,14 +4,14 @@ import * as topojson from 'topojson-client';
 import * as d3Composite from 'd3-composite-projections';
 import { latLongCommunities } from './communities';
 import { stats } from './stats';
-import { ChartComponent } from '@charts/displayer/chart.component';
+import { DisplayerContent } from '@charts/displayer/displayer-content.interface';
 
 @Component({
   selector: 'app-map-pin-location',
   templateUrl: './map-pin-location.component.html',
   styleUrls: ['./map-pin-location.component.css']
 })
-export class MapPinLocationComponent implements OnInit, ChartComponent, OnDestroy {
+export class MapPinLocationComponent implements OnInit, DisplayerContent, OnDestroy {
 
   @Input() data: any;
 

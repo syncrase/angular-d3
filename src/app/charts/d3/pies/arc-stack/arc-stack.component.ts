@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { ChartComponent } from '@charts/displayer/chart.component';
+import { DisplayerContent } from '@charts/displayer/displayer-content.interface';
 import { resultCollectionSpainNov19 } from './data';
 
 @Component({
@@ -8,7 +8,7 @@ import { resultCollectionSpainNov19 } from './data';
   templateUrl: './arc-stack.component.html',
   styleUrls: ['./arc-stack.component.css']
 })
-export class ArcStackComponent implements OnInit, ChartComponent, OnDestroy {
+export class ArcStackComponent implements OnInit, DisplayerContent, OnDestroy {
 
   @Input() data: any;
 

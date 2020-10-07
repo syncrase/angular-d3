@@ -11,15 +11,15 @@ import { ScatterComponent } from './d3/scatters/scatter/scatter.component';
 import { ViewBoxComponent } from './d3/pies/view-box/view-box.component';
 import { ChartsRoutingModule } from './charts-routing.module';
 import { DisplayerComponent } from './displayer/displayer.component';
-import { ChartDirective } from './displayer/chart-banner/chart.directive';
-import { ChartService } from './displayer/chart.service';
-import { ChartBannerComponent } from './displayer/chart-banner/chart-banner.component';
+import { DisplayerProvider } from './displayer/displayer-provider.service';
 import { MapHoverComponent } from './d3/maps/map-hover/map-hover.component';
 import { MapScaleCountriesComponent } from './d3/maps/map-scale-countries/map-scale-countries.component';
 import { MapPinLocationComponent } from './d3/maps/map-pin-location/map-pin-location.component';
 import { MapSpainChloroplethComponent } from './d3/maps/map-spain-chloropleth/map-spain-chloropleth.component';
 import { BarComponent } from './d3/histograms/bar/bar.component';
 import { Bar2Component } from './d3/histograms/bar2/bar2.component';
+import { DisplayedChart } from './displayer/banner/displayed-chart.directive';
+import { BannerComponent } from './displayer/banner/banner.component';
 
 
 
@@ -28,7 +28,7 @@ import { Bar2Component } from './d3/histograms/bar2/bar2.component';
     CommonModule,
     ChartsRoutingModule
   ],
-  providers: [ChartService],
+  providers: [DisplayerProvider],
   declarations: [
     BarComponent,
     PieComponent,
@@ -42,8 +42,8 @@ import { Bar2Component } from './d3/histograms/bar2/bar2.component';
     MultipleSeriesComponent,
     ViewBoxComponent,
     DisplayerComponent,
-    ChartDirective,
-    ChartBannerComponent,
+    DisplayedChart,
+    BannerComponent,
     MapHoverComponent,
     MapScaleCountriesComponent,
     MapPinLocationComponent,

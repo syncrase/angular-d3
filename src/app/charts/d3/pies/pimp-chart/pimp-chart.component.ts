@@ -2,14 +2,14 @@ import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { siegesParPartiNov19 } from './data';
 import { legendColor } from 'd3-svg-legend';
-import { ChartComponent } from '@charts/displayer/chart.component';
+import { DisplayerContent } from '@charts/displayer/displayer-content.interface';
 
 @Component({
   selector: 'app-pimp-chart',
   templateUrl: './pimp-chart.component.html',
   styleUrls: ['./pimp-chart.component.css']
 })
-export class PimpChartComponent implements OnInit, ChartComponent, OnDestroy {
+export class PimpChartComponent implements OnInit, DisplayerContent, OnDestroy {
 
   @Input() data: any;
 

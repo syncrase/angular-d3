@@ -1,12 +1,12 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { ChartComponent } from '@charts/displayer/chart.component';
+import { DisplayerContent } from '@charts/displayer/displayer-content.interface';
 
 @Component({
   selector: 'app-pie',
   templateUrl: './pie.component.html'
 })
-export class PieComponent implements OnInit, ChartComponent, OnDestroy {
+export class PieComponent implements OnInit, DisplayerContent, OnDestroy {
 
   @Input() data: any;
 
