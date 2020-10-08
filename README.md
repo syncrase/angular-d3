@@ -35,10 +35,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Référence qui m'ont été utiles
+## Références utiles
 Pour commencer https://blog.logrocket.com/data-visualization-angular-d3/
 D'autres exemples plus complets https://github.com/Lemoncode/d3js-typescript-examples.git
 Chargement dynamic des composants https://angular.io/guide/dynamic-component-loader
+
+## TODO
+http://duspviz.mit.edu/d3-workshop/mapping-data-with-d3/
+https://github.com/swimlane/ngx-charts
+https://bost.ocks.org/mike/example/
+https://www.datavis.fr/index.php?page=map-firststep
+https://zcreativelabs.com/blog/How-to-create-pure-react-SVG-maps-with-topojson-and-d3-geo/
+Blog https://www.toptal.com/javascript/a-map-to-perfection-using-d3-js-to-make-beautiful-web-maps
 
 
 ## Exemples d'implémentations D3.js
